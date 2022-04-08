@@ -8,8 +8,9 @@
         <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/fragment_characters.xml" value="0.1" />
         <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/fragment_favorites.xml" value="0.1" />
-        <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/fragment_search.xml" value="0.10364583333333334" />
+        <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/fragment_search.xml" value="0.14" />
         <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/title.xml" value="0.33" />
+        <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/layout/toolbar.xml" value="0.225" />
         <entry key="..\:/Projetos/Cursos/Rickverse/app/src/main/res/menu/bottom_navigation.xml" value="0.225" />
       </map>
     </option>
