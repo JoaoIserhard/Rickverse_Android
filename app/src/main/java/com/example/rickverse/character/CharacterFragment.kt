@@ -8,12 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.rickverse.R
 import com.example.rickverse.character.adapter.CharacterAdapter
+import com.example.rickverse.extension.showToast
 import com.example.rickverse.model.CharacterPreview
+import com.example.rickverse.model.CharactersResponse
+import com.example.rickverse.service.RetrofitClient
 import com.example.rickverse.util.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_characters.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class CharactersFragment : Fragment() {
+
+    private lateinit var charactersAdapter: CharacterAdapter
+
+    private var hasNextPage: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,36 +37,49 @@ class CharactersFragment : Fragment() {
     }
 
     private fun setUI() {
-        with(rvCharacter){
-            adapter = CharacterAdapter(
-                mutableListOf(
-                    CharacterPreview(
-                        id=1,
-                        name = "Teste",
-                        image = "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-                    ),
-                    CharacterPreview(
-                        id=2,
-                        name = "Teste2",
-                        image = "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-                    ),
-                    CharacterPreview(
-                        id=3,
-                        name = "Teste3",
-                        image = "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
-                    ),
-
-                ),
+        with(rvCharacter) {
+            charactersAdapter = CharacterAdapter(
+                mutableListOf(),
                 this@CharactersFragment::onClick
             )
 
-            addItemDecoration(GridSpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.margin_inside)))
+            adapter = charactersAdapter
+
+            addItemDecoration(
+                GridSpacingItemDecoration(
+                    resources.getDimensionPixelSize(
+                        R.dimen.margin_inside
+                    )
+                )
+            )
         }
 
     }
 
-    private fun getCharacters(page: Int? = null){
+    private fun getCharacters(page: Int? = null) {
+        activity?.showToast(messageId = R.string.loading)
 
+        RetrofitClient
+            .getCharactersService()
+            .getAll(page)
+            .enqueue(object : Callback<CharactersResponse> {
+
+                override fun onResponse(
+                    call: Call<CharactersResponse>?,
+                    response: Response<CharactersResponse>?
+                ) {
+                    response?.takeIf { it.isSuccessful }?.run {
+                        body()?.run {
+                            hasNextPage = info.next.isNullOrEmpty().not()
+                            charactersAdapter.addItems(characters)
+                        }
+                    } ?: activity?.showToast()
+                }
+
+                override fun onFailure(call: Call<CharactersResponse>?, t: Throwable?) {
+                    activity?.showToast()
+                }
+            })
     }
 
     private fun onClick(id: Int) {
@@ -64,6 +87,4 @@ class CharactersFragment : Fragment() {
             putExtra(CHARACTER_ID, id)
         })
     }
-
-
 }

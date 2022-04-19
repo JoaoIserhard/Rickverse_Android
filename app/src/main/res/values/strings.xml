@@ -22,7 +22,13 @@
     <string name="dead">Dead</string>
     <string name="unknown">Unknown</string>
     <string name="minimum_character_search_error">Enter at least 3 characters</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--API Requests -->
+    <string name="loading">Loading...</string>
+    <string name="no_more_characters_available">No moro characters available.</string>
+    <string name="something_went_wrong">Something went wrong.</string>
+
+    <!-- Shared Preferences Key -->
+    <string name="shared_preferences_key">com.example.rickverse</string>
 
 </resources>

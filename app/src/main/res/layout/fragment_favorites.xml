@@ -29,12 +29,12 @@
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_inside"
             android:divider="@color/accent"
-            android:dividerHeight="20dp"
+            android:dividerHeight="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ttFavorites" />
-
+            app:layout_constraintTop_toBottomOf="@id/ttFavorites" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

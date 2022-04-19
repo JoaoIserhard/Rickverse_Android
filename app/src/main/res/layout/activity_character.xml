@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".character.CharacterActivity">
 
     <include layout="@layout/toolbar" />
 
@@ -19,8 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".character.CharacterActivity">
+            android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdStart"
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="40dp" />
+                app:layout_constraintGuide_end="@dimen/margin_outside" />
 
             <com.example.rickverse.component.Title
                 android:id="@+id/ttCharacter"
@@ -44,14 +44,13 @@
                 app:layout_constraintEnd_toEndOf="@id/gdEnd"
                 app:layout_constraintStart_toStartOf="@id/gdStart"
                 app:layout_constraintTop_toTopOf="parent"
-                app:text="Rick Sanchez" />
+                app:text="RICK SANCHEZ" />
 
             <ImageView
                 android:id="@+id/ivCharacter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:scaleType="center"
+                android:layout_marginTop="@dimen/margin_inside"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,8 +135,8 @@
         android:layout_height="@dimen/fab_button_height"
         android:layout_marginEnd="@dimen/margin_fab_end"
         android:layout_marginBottom="@dimen/margin_fab_bottom"
-        android:src="@drawable/ic_favorite_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/ic_favorite_border"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

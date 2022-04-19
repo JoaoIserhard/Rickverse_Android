@@ -14,7 +14,6 @@ import com.example.rickverse.extension.hideError
 import com.example.rickverse.extension.showError
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_search.*
-import java.io.ObjectInputValidation
 
 private const val MINIMUM_CHARACTERS_SEARCH = 3
 
@@ -65,7 +64,7 @@ class SearchFragment : Fragment() {
             isNameValid
         }
 
-        verifyEditTextValue(editText = tieSpecie, textInputLayout = tilSpecie) { value ->
+        verifyEditTextValue(editText = tieSpecies, textInputLayout = tilSpecies) { value ->
             isSpeciesValid = value.length >= MINIMUM_CHARACTERS_SEARCH
             isSpeciesValid
         }
